@@ -1,9 +1,6 @@
-# -*- coding: utf-8 -*-
-"""
-*BM3D算法简单实现,主要程序部分
-*创建于2016.9.13
-*作者：lmp31
-"""
+####This is part is followed by liuhuang31:https://github.com/liuhuang31/BM3D-Denoise/blob/master/BM3D.py
+Latest commit 5d11cbe on Oct 31, 2016
+
 import cv2
 import scipy.misc
 import os
