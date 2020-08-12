@@ -11,7 +11,7 @@ import time
 import mrcfile
 import warnings
 from PIL import Image
-from pg_model import *
+from model import pg_model
 import torch.optim as optim
 import torch.backends.cudnn as cudnn
 import torchvision.utils as vutils
