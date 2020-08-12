@@ -1,12 +1,8 @@
 #! python3
 # -*- coding: utf-8 -*-
 """
-################################################################################################
-Implementation of 'PROGRESSIVE GROWING OF GANS FOR IMPROVED QUALITY, STABILITY, AND VARIATION'##
-https://arxiv.org/pdf/1710.10196.pdf                                                          ##
-################################################################################################
-https://github.com/shanexn
-Created: 2018-06-18
+This is followed by https://github.com/shanexn
+
 ################################################################################################
 """
 import os
