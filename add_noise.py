@@ -1,9 +1,12 @@
+####adding Gaussian noise
+
 import matplotlib.pyplot as plt
 from skimage.exposure import rescale_intensity
 from skimage.util import random_noise
 import mrcfile
 import argparse
 import numpy as np
+
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--SNR', type=float, default=0.4, help='siganl noise ration')
