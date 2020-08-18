@@ -70,6 +70,7 @@ datatype = opt.datatype
 lambda1 = opt.lambda1
 lambda2 = opt.lambda2
 regularization = opt.regularization
+is_sigmoid = True
 mname = datatype + '_' + opt.arch + '_' + opt.regularization + '_alpha' + str(alpha) + '_beta' + str(
     beta) + '_SNR' + str(SNR) + '_regulalambda' + str(lambda1) + '_robusttype' + str(robusttype) + '_proportion' + str(
     opt.proportion)
@@ -110,18 +111,27 @@ else:
 
 ###network
 if datatype == 'sim':
-    if arch == 'resnet_betagan' or arch == 'resnet_wgangp' or arch == 'autoencoder':
+    if arch == 'resnet_betagan' or arch == 'autoencoder':
         G = sim_resnet_gan.generator(d)
-        D = sim_resnet_gan.discriminator(d)
+        D = sim_resnet_gan.discriminator(d, is_sigmoid = True)
+    elif arch == 'resnet_wgangp':
+        G = sim_resnet_gan.generator(d)
+        D = sim_resnet_gan.discriminator(d, is_sigmoid = False)
+        
     elif arch == 'dcgan':
         G = sim_dcgan.generator(d)
         D = sim_dcgan.discriminator(d)
     elif arch == 'dcwgan':
         G = sim_dcwgan.generator(d)
         D = sim_dcwgan.discriminator(d)
-    else:
-        G = exper_resent_gan.generator(d)
-        D = exper_resent_gan.discriminator(d)
+else:
+    if arch == 'resnet_betagan' or arch == 'autoencoder':
+        G = exper_resnet_gan.generator(d)
+        D = exper_resnet_gan.discriminator(d, is_sigmoid = True)
+    elif arch == 'resnet_wgangp':
+        G = exper_resnet_gan.generator(d)
+        D = exper_resnet_gan.discriminator(d, is_sigmoid = False)
+        
 
 
 ###train
