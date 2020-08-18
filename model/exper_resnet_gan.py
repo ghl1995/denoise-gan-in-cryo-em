@@ -221,6 +221,6 @@ class discriminator(nn.Module):
         f50 = F.relu(self.conv5_bn(self.conv5(f4b)))  # 29
         f60 = self.conv6(f50)  # 26
         if is_sigmoid:
-            f60 = F.sigmoid (f60)
+            f60 = F.sigmoid(f60)
 
         return f60
