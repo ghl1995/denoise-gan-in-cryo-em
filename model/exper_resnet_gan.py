@@ -202,7 +202,7 @@ class discriminator(nn.Module):
             normal_init(self._modules[m], mean, std)
 
     # forward method
-    def forward(self, img):
+    def forward(self, img, is_sigmoid = True):
         #x = torch.cat([img, cond], 1)
         x = img
         f10 = F.relu(self.conv1_bn(self.conv1(x)))  # 128
@@ -220,5 +220,7 @@ class discriminator(nn.Module):
         f4b = F.relu(torch.add(self.layerf4b(f4a), 1, f4a))
         f50 = F.relu(self.conv5_bn(self.conv5(f4b)))  # 29
         f60 = self.conv6(f50)  # 26
+        if is_sigmoid:
+            f60 = F.sigmoid (f60)
 
         return f60
