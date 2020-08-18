@@ -128,7 +128,7 @@ class discriminator(nn.Module):
             normal_init(self._modules[m], mean, std)
 
     # forward method
-    def forward(self, cond):
+    def forward(self, cond, is_sigmoid):
         x = cond
         f10 = F.relu(self.conv1_bn(self.conv1(x)))  # 128
         f1a = F.relu(torch.add(self.layerf1a(f10), 1, f10))
@@ -141,5 +141,8 @@ class discriminator(nn.Module):
         f3b = F.relu(torch.add(self.layerf3b(f3a), 1, f3a))
         f3c = F.relu(torch.add(self.layerf3c(f3b), 1, f3b))
         f60 = self.conv6(f3c)  # 26
+        if is_sigmoid:
+            f60 = F.sigmoid (f60)
+            
 
         return f60
